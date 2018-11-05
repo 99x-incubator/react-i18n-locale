@@ -45,7 +45,7 @@ ReactDOM.render(
 **Component.js**
 ```js
 import React, { Component } from 'react';
-import { withIntl } from "crl-demo";
+import { withIntl } from "react-intl-translate";
 
 class App extends Component {
   render () {
