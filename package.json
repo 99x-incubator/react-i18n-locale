@@ -1,12 +1,12 @@
 {
-  "name": "react-intl-translate",
+  "name": "react-i18n-locale",
   "version": "0.0.1",
   "description": "Adding multilingual support for React app",
   "author": "thinkholic",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/99xt-incubator/react-intl-translate.git"
+    "url": "https://github.com/99xt-incubator/react-i18n-locale.git"
   },
   "main": "dist/index.js",
   "module": "dist/index.es.js",
@@ -55,7 +55,7 @@
     "prettier-eslint": "^8.8.2",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
-    "react-scripts": "^1.1.4",
+    "react-scripts": "^2.1.2",
     "rollup": "^0.64.1",
     "rollup-plugin-babel": "^3.0.7",
     "rollup-plugin-commonjs": "^9.1.3",
