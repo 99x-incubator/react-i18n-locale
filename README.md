@@ -1,4 +1,4 @@
-# react-intl-translate
+# react-i18n-locale
 
 ## Usage Example
 
@@ -18,7 +18,7 @@
 ```js
 import React from "react";
 import ReactDOM from "react-dom";
-import IntlContext from "react-intl-translate";
+import IntlContext from "react-i18n-locale";
 
 import App from "./App";
 import langConfigs from "./langConfigs.json";
@@ -45,7 +45,7 @@ ReactDOM.render(
 **Component.js**
 ```js
 import React, { Component } from 'react';
-import { withIntl } from "react-intl-translate";
+import { withIntl } from "react-i18n-locale";
 
 class App extends Component {
   render () {
