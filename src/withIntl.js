@@ -8,28 +8,27 @@ import {
   getNestedValueByStringKey
 } from "./utils/mixins";
 
+const getLanguageData = ({ userLanguage, languageConfigs }) => {
+  if (!userLanguage || !languageConfigs) return null;
+  if (!includes(Object.keys(languageConfigs), userLanguage))
+    return languageConfigs.defaults;
 
-const getLangData = ({ userLang, langConfigs }) => {
-  if (!userLang || !langConfigs) return null;
-  if (!includes(Object.keys(langConfigs), userLang))
-    return langConfigs.defaults;
-
-  return langConfigs[userLang];
+  return languageConfigs[userLanguage];
 };
 
 const translate = (key, defaultText, args, config) => {
-  const langData = getLangData(config);
-  if (!langData) return defaultText || key;
+  const languageData = getLanguageData(config);
+  if (!languageData) return defaultText || key;
 
-  const text = getNestedValueByStringKey(langData, key);
+  const text = getNestedValueByStringKey(languageData, key);
   return updateWithArgs(text, args) || defaultText || key;
 };
 
 const translateHtml = (key, defaultText, args, config) => {
-  const langData = getLangData(config);
-  if (!langData) return defaultText || key;
+  const languageData = getLanguageData(config);
+  if (!languageData) return defaultText || key;
 
-  const html = getNestedValueByStringKey(langData, key);
+  const html = getNestedValueByStringKey(languageData, key);
   if (!html) return defaultText || key;
 
   const translatedHtml = updateWithArgs(html, args);
@@ -43,7 +42,7 @@ export default function withIntl(Component) {
         {config => (
           <Component
             {...props}
-            userLang={config.userLang}
+            userLanguage={config.userLanguage}
             translate={(key, defaultText = null, ...args) =>
               translate(key, defaultText, args, config)
             }
