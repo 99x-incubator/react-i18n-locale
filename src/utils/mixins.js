@@ -1,21 +1,21 @@
 import each from "lodash/each";
 
-export function updateWithArgs(str, params) {
-  if (!str) return null;
+export function updateWithArgs(text, args) {
+  if (!text) return null;
 
-  // When params comes as key-value pairs
-  if (params && params[0] && typeof params[0] === "object") {
-    const paramObj = params[0];
+  // When params come as key-value pairs
+  if (args && args[0] && typeof args[0] === "object") {
+    const paramObj = args[0];
     each(paramObj, (val, key) => {
-      str = str.replace(key, val); // eslint-disable-line no-param-reassign
+      text = text.replace(key, val); // eslint-disable-line no-param-reassign
     });
   } else {
-    each(params, param => {
-      str = str.replace("$?", param); // eslint-disable-line no-param-reassign
+    each(args, param => {
+      text = text.replace("$?", param); // eslint-disable-line no-param-reassign
     });
   }
 
-  return str;
+  return text;
 }
 
 export function createMarkup(html) {
@@ -24,17 +24,17 @@ export function createMarkup(html) {
 }
 
 // Accessing nested JavaScript objects with string key
-export const getNestedValueByStringKey = (obj, strKey) => {
-  let str = strKey.replace(/\[(\w+)\]/g, ".$1"); // convert indexes to properties
-  str = str.replace(/^\./, ""); // strip a leading dot
-  const keys = str.split(".");
+export const getNestedValueByStringKey = (object, stringKey) => {
+  let indexToProperty = stringKey.replace(/\[(\w+)\]/g, ".$1"); // convert indexes to properties
+  indexToProperty = indexToProperty.replace(/^\./, ""); // strip a leading dot
+  const keys = indexToProperty.split(".");
   for (let i = 0, n = keys.length; i < n; i += 1) {
     const k = keys[i];
-    if (k in obj) {
-      obj = obj[k]; // eslint-disable-line no-param-reassign
+    if (k in object) {
+      object = object[k]; // eslint-disable-line no-param-reassign
     } else {
       return false;
     }
   }
-  return obj;
+  return object;
 };
